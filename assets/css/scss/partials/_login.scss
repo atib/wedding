@@ -1,0 +1,17 @@
+.login_logo { 
+ 	width: 30%;
+ 	max-width: 14%;
+}
+
+#loginPage { 
+	
+	margin-top: 25%;
+	
+	input.form-control { 
+		@include border(1px, 0px); 
+	}
+
+	.btn-primary { 
+		font-size: 1.2em;
+	}
+}

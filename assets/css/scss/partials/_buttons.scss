@@ -1,0 +1,32 @@
+.btn { 
+	min-height: 2.5em;
+	letter-spacing: .05em;
+	font: {
+		family: $family_sans; 
+	} 
+	border: none;
+	border-radius: 0px;
+	box-shadow: none;
+	padding: { 
+		left: 15px;
+		right: 15px; 
+		top: 10px;
+		bottom: 10px;
+	}
+	width: 100%;
+	outline: none;
+	text-transform: uppercase;
+	box-shadow: 2px 2px 5px $button_shadow_dark;
+}
+
+
+.btn-primary {
+	@extend .btn;
+	background: $primarybtn;
+	font: {
+		color: $primarybtn_font;
+		weight: $light;
+		size: 1em;
+	}
+
+}
