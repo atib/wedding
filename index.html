@@ -3,12 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tasnim &amp; Atib</title>
+	<meta name="robots" content="noindex" />
+	<meta name="robots" content="nofollow" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
-	<link rel="shortcut icon" href="assets/images/favicon.ico" size="16x16">
+	<link rel="shortcut icon" href="assets/images/t_a.png" size="16x16">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100, 400" rel="stylesheet">	
+  <link href="https://fonts.googleapis.com/css?family=Lato:100, 400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel:400" rel="stylesheet">	
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/scss/wedding.css">
@@ -16,17 +20,35 @@
 </head>
 <body>
 	
+	<div class="container-fluid">
+		<div class="row">
+	    <div class="col-xs-12">
+	      <ul>  
+	        <li><a ui-sref="details" ui-sref-active="selected" >details</a></li>
+	        <!-- <li><a ui-sref="photo" ui-sref-active="selected">photographs</a></li> -->
+	        <li><a ui-sref="playlist" ui-sref-active="selected">Playlist</a></li>
+	        <li><a ui-sref="rsvp" ui-sref-active="selected">rsvp</a></li>
+	        <li><a ui-sref="contact" ui-sref-active="selected">contact</a></li>
+	      </ul>
+	    </div>
+	  </div>
 
-	<div ui-view></div>
+		<div ui-view></div>
+
+		<p class="p_logo">
+			<a ui-sref="index" ui-sref-active="home" class="logo">
+			  T&amp;A
+			</a>
+		</p>
+		<p class="credit">
+			Designed &amp; Developed by <a href="https://atib.github.io">Atib</a>
+		</p>
+	</div>
+	
 
 
-	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
-	<script type="text/javascript" src="node_modules/angular-bootstrap-npm/dist/angular-bootstrap.min.js"></script>
-	<script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/dist/wedding.min.js"></script>
 	<script type="text/javascript" src="app/app.js"></script>
-
 
 </body>
 </html>

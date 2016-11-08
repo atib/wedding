@@ -1,17 +1,41 @@
 $mainFont: 'Source Sans Pro';
 
+@mixin transition($time) {
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+  -o-transition: all $time ease;
+  transition: all $time ease;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
 	background: url('../../images/background.jpeg') no-repeat center center fixed;
 	-webkit-background-size: cover;
   -moz-background-size: cover;   
   -o-background-size: cover;     
   background-size: cover;   
+
+ 	position: relative;
+  margin: 0;
+  padding-bottom: 10rem;
+  min-height: 100%;
 }
 
 
 ul {
  	text-align: center;
-
+	padding: 0;
+	margin: 0;
   li {
 	 	display: inline;
 	 	list-style-type: none;
@@ -19,18 +43,32 @@ ul {
 		text-transform: uppercase;
 		font-weight: 300;
 		letter-spacing: 1.5px;
+
 		padding: {
 			left: 10px;
 			right: 10px;
 		}
 		a {
 			color: #000;
-			
+			text-decoration: none;
+			border-bottom: 1.5px solid transparent;
+
+			@include transition(0.5s);
 			&:hover {
 				text-decoration: none;
 				color: #000;
-				border-bottom: 1px solid #CFAE88;
+				border-bottom: 1.5px solid #CFAE88;
+				@include transition(0.5s);
 			}
+			&:focus, &:active  {
+				outline: none;
+				text-decoration: none;
+				color: #000;
+			}
+		}
+		.selected {
+			border-bottom: 1.5px solid #CFAE88;
+
 		}
 	}
 
@@ -41,36 +79,285 @@ ul {
 
 
 h1 {
-	font-family: 'Lato';
+	font-family: 'Lato', serif;
 	text-align: center;
 	font-weight: 100;
 	font-size: 10em;
 	margin-top: 1.3em;
 	letter-spacing: 1.5px;
+	color: #000;
+	
 }
 
-@media (max-width: 767px) {
+h2 {
+	font-family: 'Lato', sans-serif; 
+	text-align: center;
+	font-weight: 100;
+	letter-spacing: 1.5px;
+	font-size: 5em;
+	cursor: pointer;
+	color: #000;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+		text-decoration: none;
+		color: #000;
+		@include transition(0.5s);
+		}
+		&:focus, &:active  {
+			outline: none;
+			text-decoration: none;
+			color: #000;
+		}
+	}
+}
+
+h3 {
+	font-family: $mainFont; 
+	text-align: center;
+	font-weight: 300;
+	span {
+		font-weight: 400;
+	}
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	font-size: 2.3em;
+
+}
+
+h4 {
+	font-family: $mainFont;
+	text-align: center;
+	font-weight: 300;
+	font-size: 1.9em;
+
+}
+
+.wedding {
+	margin-top: 2em;
+	p {
+		text-align: center;
+		text-transform: uppercase;
+		font-family: $mainFont;
+		margin:0;
+		font-weight: 300;
+		letter-spacing: 1px;
+		font-size: 1em;
+	}
+	a {
+		font-family: 'Amatic SC', cursive;
+		font-weight: 700;
+		font-size: 2em;
+		color: #CFAE88;
+	}
+}
+
+.wedding_inner {
+	margin-top: 10px !important;
+}
+
+@media (min-width: 531px) and (max-width: 767px) {
+	h1 {
+		font-size: 6em;
+		margin-top: 2em;
+	}
+}
+
+@media (min-width: 300px) and (max-width: 530px) {
+	ul {
+		text-align: left;
+	}
+	h1 {
+		font-size: 3em;
+		margin-top: 3em;
+	}
+}
+
+@media (min-width: 300px) and (max-width: 530px) and (orientation: landscape) {
+	ul {
+		text-align: left;
+	}
+	h1 {
+		font-size: 3em;
+		margin-top: 2em;
+	}
+}
+
+@media (min-width: 531px) and (max-width: 767px) and (orientation: landscape){
 	h1 {
 		font-size: 5em;
-		margin-top: 4em;
+		margin-top: 0.8em;
 	}
+}
+
+p {
+	font-family: $mainFont;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 1.2em;
 }
 
 .p_logo {
-	padding-bottom: 10px;
+	position: absolute;
+  right: 0;
+  bottom: 40px;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
 }
 
 .logo {
-	font-family: 'Lato';
+	// font-family: 'Lato';
 	color: #000;
-	border: 0.5px solid #000;
-	padding: 10px;
-	border-radius: 50em;
+	border: 2px solid #CFAE88;
+	padding: 14px 5px 10px;
 	margin-bottom: 25px;
-	font-weight: 400;
+	font-family: 'Cinzel', serif;
+	letter-spacing: 2px;
+	text-decoration: none;
+	@include transition(0.5s);
 	&:hover {
+		@include transition(0.5s);
 		text-decoration: none;
 		color: #444;
+		border-color: #B59977;
 	}
 }
 
+.credit { 
+	text-transform: uppercase;
+	font-size: 0.8em;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 1rem; 
+	right: 0;
+	text-align: center;
+	a {
+		font-weight: 700;
+		// color: #1fc8db;
+		background: -webkit-linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+		-webkit-background-clip:text;
+		-webkit-text-fill-color: transparent;
+		&:hover, &:active { 
+			color: #000;
+
+		}
+	}
+}
+
+.sectionBackground {
+	background: #fff;
+  margin: 3% 0;
+  // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 8% 10px; 
+}
+
+
+form {
+	font-family: $mainFont;
+	label {
+		font-weight: 400;
+		letter-spacing: 0.5px;
+	}
+	.sublabel {
+		font-size: 0.9em;
+		font-weight: 300;
+		text-transform: capitalize;
+	}
+
+	input.form-control, textarea.form-control {
+		border-color: #dedede;
+		box-shadow: none;
+		background: #F6F6F6;
+		border-width: 1px;
+		border-radius: 0px;
+		min-height: 2.8em;
+		outline: none;
+		font: {
+			weight: 400;
+			family: $mainFont;
+		}
+		letter-spacing: 0.5px;
+		@include transition(0.5s);
+		&:focus, &:active {
+			box-shadow: none;
+			outline: none;
+			background-color: #fff;
+			border-color: #dedede;
+			@include transition(0.5s);
+		}
+	}
+
+	.btn {
+		border-radius: 0px;
+		background-color: #000;
+		color: #fff;
+		font-family: $mainFont;
+		padding: 10px 30px;
+		font-size: 1.2em;
+		font-weight: 400;
+		width: 100%;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		outline: none;
+		border-color: transparent;
+		@include transition(1s);
+
+		&:hover, &:active, &:focus {
+			border-color: #000;
+			background-color: #fff;
+			color: #000;
+			outline: none;
+		@include transition(1s);
+
+		}
+
+		&:active {
+			&:focus {
+				background-color: #fff;
+				color: #000;
+				outline: none;
+			}
+		}
+	}
+}
+
+.privacy {
+	text-transform: uppercase;
+	font-size: 0.8em;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 1rem; 
+	text-align: center;
+	font-family: $mainFont;
+	color: #000;	
+	font-weight: lighter;
+	letter-spacing: 0.5px;
+}
+
+.emailrsvp_link {
+	color: #000;
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	@include transition(0.5s);
+	&:hover {
+		text-decoration: none;
+		color: #000;
+		border-bottom: 2px solid #CFAE88;
+		@include transition(0.5s);
+	}
+	&:focus, &:active  {
+		outline: none;
+		text-decoration: none;
+		color: #000;
+	}
+}
