@@ -65,7 +65,7 @@ WeddingApp.config(['$stateProvider', '$urlRouterProvider',
 				'': {
 					templateUrl: 'app/views/main/photographs.html', 
 					controller: function(){
-
+						jQuery.instaShow();	
 					}
 				}
 			}
@@ -78,6 +78,8 @@ WeddingApp.config(['$stateProvider', '$urlRouterProvider',
 				'': {
 					templateUrl: 'app/views/main/rsvp.html',
 					controller: function($scope) {
+						
+						
 						
 						$scope.rsvp_password = function() {
 							if ($scope.password_rsvp == 'aw3som3n355') {
