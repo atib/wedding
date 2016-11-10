@@ -18,6 +18,10 @@ html {
   box-sizing: inherit;
 }
 
+* {
+	border-color: #CFAE88;
+}
+
 a {
 	&:focus {
 		outline: none;
@@ -306,6 +310,10 @@ form {
 			border-color: #dedede;
 			@include transition(0.5s);
 		}
+	}
+
+	textarea.form-control {
+		resize: none;
 	}
 
 	select.form-control {

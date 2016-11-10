@@ -45,9 +45,9 @@ if(isset($_POST['email'])) {
  
     // EDIT THE 2 LINES BELOW AS REQUIRED
  
-    $email_to = "rsvp@tasnimandatib.co.uk";
+    $email_to = "hello@tasnimandatib.co.uk";
  
-    $email_subject = "New wedding RSVP";
+    $email_subject = "New question";
  
      
  
@@ -60,7 +60,7 @@ if(isset($_POST['email'])) {
  				echo '<div class="row"><div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><div class="row sectionBackground"><div class="col-xs-12"><div class="row">
           <div class="col-sm-12">
             <p class="p_logo_top">
-              <a href="/" ui-sref-active="home" class="logo">
+              <a href="/" class="logo">
                 T&amp;A
               </a>
             </p>
@@ -84,10 +84,10 @@ if(isset($_POST['email'])) {
  
     // validation expected data exists
  
-    if(!isset($_POST['firstname']) ||
-        !isset($_POST['lastname']) ||
-        !isset($_POST['email']) || 
-        !isset($_POST['coming']) ||
+    if(!isset($_POST['name']) ||
+ 
+        !isset($_POST['email']) ||
+ 
         !isset($_POST['message'])) {
  
         died('We are sorry, but there appears to be a problem with the form you submitted.');       
@@ -97,52 +97,10 @@ if(isset($_POST['email'])) {
     
     //Main Guest
  
-    $first_name = $_POST['firstname']; // required
-	  $last_name = $_POST['lastname']; // required    
+    $name = $_POST['name']; // required
     $email_from = $_POST['email']; // required
-		$coming = $_POST['coming']; // required
     $comments = $_POST['message']; // not required
 
-
-	  // Additional Guests Names
-
-    if (
-        isset($_POST['firstname_1']) ||
-        isset($_POST['lastname_1']) ||
-
-        isset($_POST['firstname_2']) ||
-        isset($_POST['lastname_2']) ||
-
-        isset($_POST['firstname_3']) ||
-        isset($_POST['lastname_3']) ||
-
-        isset($_POST['firstname_4']) ||
-        isset($_POST['lastname_4']) ||
-
-        isset($_POST['firstname_5']) ||
-        isset($_POST['lastname_5']) ||
-        
-
-        isset($_POST['add_guests'])) {
-
-      $firstname_1 = $_POST['firstname_1']; // not required
-      $lastname_1 = $_POST['lastname_1']; // not required
-
-      $firstname_2 = $_POST['firstname_2']; // not required
-      $lastname_2 = $_POST['lastname_2']; // not required
-
-      $firstname_3 = $_POST['firstname_3']; // not required
-      $lastname_3 = $_POST['lastname_3']; // not required
-
-      $firstname_4 = $_POST['firstname_4']; // not required
-      $lastname_4 = $_POST['lastname_4']; // not required 
-
-      $firstname_5 = $_POST['firstname_5']; // not required
-      $lastname_5 = $_POST['lastname_5']; // not required 
-
-      $additional = $_POST['add_guests'];
-  }
-    
     $error_message = "";
  
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
@@ -155,21 +113,15 @@ if(isset($_POST['email'])) {
  
     $string_exp = "/^[A-Za-z .'-]+$/";
  
-  if(!preg_match($string_exp,$first_name)) {
+  if(!preg_match($string_exp,$name)) {
  
-    $error_message .= 'The <b>First Name</b> you entered does not appear to be valid.<br />';
- 
-  }
- 
-  if(!preg_match($string_exp,$last_name)) {
- 
-    $error_message .= 'The <b>Last Name</b> you entered does not appear to be valid.<br />';
+    $error_message .= 'The <b>Name</b> you entered does not appear to be valid.<br />';
  
   }
  
-  if(strlen($coming) < 2) {
+  if(strlen($comments) < 5) {
  
-    $error_message .= 'Please enter either <b>yes</b> or <b>no</b> whether you will be attending.<br />';
+    $error_message .= 'Please enter <b>more than five characters</b>.<br />';
  
   }
  
@@ -177,7 +129,7 @@ if(isset($_POST['email'])) {
     died($error_message);
   }
  
-    $email_message = "The RSVP details for a new guest.\n\n";
+    $email_message = "Details of the new question: .\n\n";
  
      
  
@@ -191,53 +143,10 @@ if(isset($_POST['email'])) {
  
      
  
-    $email_message .= "Main Guest Name: ".clean_string($first_name)." ".clean_string($last_name). "\n\n";
+    $email_message .= "Name: ".clean_string($name)."\n\n";
   
     $email_message .= "Email: \n".clean_string($email_from)."\n\n";
- 
-    $email_message .= "Are they coming?: \n".clean_string($coming)."\n\n";
- 		
-    if (isset($_POST['firstname_1']) ||
-        isset($_POST['lastname_1']) ||
-
-        isset($_POST['firstname_2']) ||
-        isset($_POST['lastname_2']) ||
-
-        isset($_POST['firstname_3']) ||
-        isset($_POST['lastname_3']) ||
-
-        isset($_POST['firstname_4']) ||
-        isset($_POST['lastname_4']) ||
-
-        isset($_POST['firstname_5']) ||
-        isset($_POST['lastname_5'])) {
-
-          $email_message .= "The additional guests are listed below \n\n";
-
-          $email_message .= "Number of Additional Guests: ".clean_string($additional)." \n\n";
-
-          if($firstname_1) {
-            $email_message .= "Additional Guest 1: \n".clean_string($firstname_1)." ".clean_string($lastname_1). "\n\n";
-          }
-
-          if($firstname_2){
-            $email_message .= "Additional Guest 2: \n".clean_string($firstname_2)." ".clean_string($lastname_2). "\n\n";
-          }
-
-          if($firstname_3){
-          $email_message .= "Additional Guest 3: \n".clean_string($firstname_3)." ".clean_string($lastname_3). "\n\n";
-
-          }
-          if($firstname_4){
-          $email_message .= "Additional Guest 4: \n".clean_string($firstname_4)." ".clean_string($lastname_4). "\n\n";
-
-          }
-          if($firstname_5){
-          $email_message .= "Additional Guest 5: \n".clean_string($firstname_5)." ".clean_string($lastname_5). "\n\n";
-
-          }
-    }
-    
+  		
     $email_message .= "Message: \n".clean_string($comments)."\n";
  
      
@@ -277,7 +186,7 @@ $headers = 'From: '.$email_from."\r\n".
 								<h3>
 									Thank You!
 								</h3>
-								<p> Thank you for sending us your RSVP. We will send a confirmation email very soon. </p>
+								<p> We will get back to you as soon as possible.<br>Have a wonderful day! </p>
 							</div>
 						</div>
 
