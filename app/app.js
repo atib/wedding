@@ -65,6 +65,7 @@ WeddingApp.config(['$stateProvider', '$urlRouterProvider',
 				'': {
 					templateUrl: 'app/views/main/photographs.html', 
 					controller: function(){
+						jQuery.instaShow();
 
 					}
 				}
@@ -79,14 +80,46 @@ WeddingApp.config(['$stateProvider', '$urlRouterProvider',
 					templateUrl: 'app/views/main/rsvp.html',
 					controller: function($scope) {
 						
+						$scope.options = 
+						[
+			        {
+			          name: 'No Additional Guest',
+			          value: '0'
+			        }, 
+			        {
+			          name: '1 Guest',
+			          value: '1'
+			        }, 
+			        {
+			          name: '2 Guests',
+			          value: '2'
+			        }, 
+			        {
+			          name: '3 Guests',
+			          value: '3'
+			        }, 
+			        {
+			          name: '4 Guests',
+			          value: '4'
+			        }, 
+			        {
+			          name: '5 Guests',
+			          value: '5'
+			        }
+
+				    ];
+
+				    $scope.additonal_guests = $scope.options[0].value;
+							
 						$scope.rsvp_password = function() {
 							if ($scope.password_rsvp == 'aw3som3n355') {
+								$('#mainrsvpform').addClass('showfadein');
+								document.getElementById('rsvp_password_field').style.display = 'none';
 								return true;
 							}
-							else {
-								false;
-							}
 						}
+
+
 					
 					}
 				}
