@@ -5,3 +5,4 @@ Allow from all
 
 ErrorDocument 403 http://tasnimandatib.co.uk/404.html
 ErrorDocument 404 http://tasnimandatib.co.uk/404.html
+
