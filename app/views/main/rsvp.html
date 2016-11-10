@@ -19,18 +19,18 @@
 
 				
 				
-					<form>
-						<div class="row wedding" ng-hide="rsvp" style="text-align: center;">
+					<form autocomplete="off">
+						<div class="row wedding" id="rsvp_password_field" ng-hide="rsvp" style="text-align: center;">
 							<div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 ">
-								<input type="password" ng-model="password_rsvp" class="form-control" style="text-align: center;" >
+								<input type="password"  ng-model="password_rsvp" class="form-control" style="text-align: center;" >
 								<label class="sublabel">Enter RSVP Password</label>
 							</div>
 						</div>
 					</form>
 
-					<form action="emailformrsvp.php" name="rsvp_form" method="POST">
+					<form action="emailformrsvp.php" name="rsvp_form" method="POST" autocomplete="off">
 
-						<div ng-if="rsvp_password()">
+						<div ng-if="rsvp_password()" id="mainrsvpform">
 							<div class="row wedding">
 								<div class="col-sm-10 col-sm-offset-1">
 									<label for="email">Email Address * </label>
@@ -57,7 +57,19 @@
 							<div class="row wedding">
 								<div class="col-sm-10 col-sm-offset-1">
 									<label for="coming">Will you be coming? *</label>
-									<input required="true" type="text" class="form-control" name="coming">
+									<div class="row" id="coming">
+                    <div class="col-sm-2 ">
+                        <input type="radio" id="yes_coming" name="coming" value="Yes">
+                        <label for="yes_coming" class="radiolabel">Yes</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="radio" id="no_call_centre" name="coming" value="No">
+                        <label for="no_call_centre" class="radiolabel">No</label>
+                    </div>
+                	</div>
+                	<div class="row">
+                		
+                	</div>
 								</div>
 							</div>
 
@@ -65,47 +77,97 @@
 								<div class="col-sm-10 col-sm-offset-1">
 									<label for="plusguest">Additional Guests</label>
 									
-									<div class="row" style="margin-top: 10px;"> 
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="firstname_1">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_1">
-											<label class="sublabel">Last Name</label>
-										</div>
-									</div>
-									
 									<div class="row" style="margin-top: 10px;">
 										<div class="col-xs-6">
-											<input type="text" class="form-control" name="firstname_2">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_2">
-											<label class="sublabel">Last Name</label>
-										</div>
-									</div>
-									
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="firstname_3">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="lastname_3">
-											<label class="sublabel">Last Name</label>
+											<select 
+										    ng-model="additonal_guests" 
+										    class="form-control"
+										    name="additonal_guests"
+										    id="additonal_guests" 
+										    ng-options="option.value as option.name for option in options">
+											</select>
 										</div>
 									</div>
 
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="firstname_4">
-											<label class="sublabel">First Name</label>
+									<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='1' || additonal_guests=='2' || additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'"> 
+										<div class="col-xs-12">
+											<h5>Guest 1</h5>
+											<div class="row">
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="firstname_1">
+													<label class="sublabel">First Name</label>
+												</div>
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="lastname_1">
+													<label class="sublabel">Last Name</label>
+												</div>
+											</div>
 										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_4">
-											<label class="sublabel">Last Name</label>
+										
+									</div>
+									
+									<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='2' || additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'">
+										<div class="col-xs-12">
+											<h5>Guest 2</h5>
+											<div class="row">
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="firstname_2">
+													<label class="sublabel">First Name</label>
+												</div>
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="lastname_2">
+													<label class="sublabel">Last Name</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'">
+										<div class="col-xs-12">
+											<h5>Guest 3</h5>
+											<div class="row">
+												<div class="col-xs-6">
+													<input  type="text" class="form-control" name="firstname_3">
+													<label class="sublabel">First Name</label>
+												</div>
+												<div class="col-xs-6">
+													<input  type="text" class="form-control" name="lastname_3">
+													<label class="sublabel">Last Name</label>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='4'|| additonal_guests=='5'">
+										<div class="col-xs-12">
+											<h5>Guest 4</h5>
+											<div class="row">
+												<div class="col-xs-6">
+													<input  type="text" class="form-control" name="firstname_4">
+													<label class="sublabel">First Name</label>
+												</div>
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="lastname_4">
+													<label class="sublabel">Last Name</label>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+
+									<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='5'">
+										<div class="col-xs-12">
+											<h5>Guest 5</h5>
+											<div class="row">
+												<div class="col-xs-6">
+													<input  type="text" class="form-control" name="firstname_5">
+													<label class="sublabel">First Name</label>
+												</div>
+												<div class="col-xs-6">
+													<input type="text" class="form-control" name="lastname_5">
+													<label class="sublabel">Last Name</label>
+												</div>
+											</div>
 										</div>
 									</div>
 

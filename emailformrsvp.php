@@ -7,7 +7,7 @@
 	<meta name="robots" content="nofollow" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
-	<link rel="shortcut icon" href="assets/images/t_a.png" size="16x16">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" size="16x16">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:100, 400" rel="stylesheet">
@@ -94,7 +94,12 @@ if(isset($_POST['email'])) {
 
         !isset($_POST['firstname_4']) ||
         !isset($_POST['lastname_4']) ||
- 
+
+        !isset($_POST['firstname_5']) ||
+        !isset($_POST['lastname_5']) ||
+
+        !isset($_POST['additonal_guests']) ||
+
         !isset($_POST['message'])) {
  
         died('We are sorry, but there appears to be a problem with the form you submitted.');       
@@ -124,10 +129,11 @@ if(isset($_POST['email'])) {
     $firstname_4 = $_POST['firstname_4']; // not required
 	  $lastname_4 = $_POST['lastname_4']; // not required 
 
-    
- 
-     
- 
+    $firstname_5 = $_POST['firstname_5']; // not required
+    $lastname_5 = $_POST['lastname_5']; // not required 
+
+    $additional = $_POST['additonal_guests']; // not required 
+
     $error_message = "";
  
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
@@ -183,6 +189,8 @@ if(isset($_POST['email'])) {
     $email_message .= "Are they coming?: ".clean_string($coming)."\n";
  		
     $email_message .= "The additional guests are listed below \n";
+    
+    $email_message .= "Number of Additional Guests: ".clean_string($additional)." \n";
 
     $email_message .= "Additional Guest 1: ".clean_string($firstname_1)." ".clean_string($lastname_1). "\n";
 
@@ -191,6 +199,8 @@ if(isset($_POST['email'])) {
     $email_message .= "Additional Guest 3: ".clean_string($firstname_3)." ".clean_string($lastname_3). "\n";
     
     $email_message .= "Additional Guest 4: ".clean_string($firstname_4)." ".clean_string($lastname_4). "\n";
+
+    $email_message .= "Additional Guest 5: ".clean_string($firstname_5)." ".clean_string($lastname_5). "\n";
 
     $email_message .= "Message: ".clean_string($comments)."\n";
  
