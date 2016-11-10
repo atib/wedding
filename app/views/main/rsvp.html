@@ -68,70 +68,18 @@
 								<!-- <input required="true" type="text" class="form-control" name="coming"> -->
 								<div class="row" id="coming">
                   <div class="col-sm-2 ">
-                      <input type="radio" id="yes_coming" name="coming" value="Yes" required="true">
+                      <input type="radio" id="yes_coming" ng-model="coming" name="coming" value="Yes" required="true">
                       <label for="yes_coming" class="radiolabel">Yes</label>
                   </div>
                   <div class="col-sm-2">
-                      <input type="radio" id="no_call_centre" name="coming" value="No" required="true">
+                      <input type="radio" id="no_call_centre" ng-model="coming" name="coming" value="No" required="true">
                       <label for="no_call_centre" class="radiolabel">No</label>
                   </div>
               	</div>
 							</div>
 						</div>
 
-						<!-- Guests -->
-						<!-- <div class="row wedding">
-							<div class="col-sm-10 col-sm-offset-1">
-								<label for="plusguest">Additional Guests</label>
-								
-								<div class="row" style="margin-top: 10px;"> 
-									<div class="col-xs-6">
-										<input type="text" class="form-control" name="firstname_1">
-										<label class="sublabel">First Name</label>
-									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control" name="lastname_1">
-										<label class="sublabel">Last Name</label>
-									</div>
-								</div>
-								
-								<div class="row" style="margin-top: 10px;">
-									<div class="col-xs-6">
-										<input type="text" class="form-control" name="firstname_2">
-										<label class="sublabel">First Name</label>
-									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control" name="lastname_2">
-										<label class="sublabel">Last Name</label>
-									</div>
-								</div>
-								
-								<div class="row" style="margin-top: 10px;">
-									<div class="col-xs-6">
-										<input  type="text" class="form-control" name="firstname_3">
-										<label class="sublabel">First Name</label>
-									</div>
-									<div class="col-xs-6">
-										<input  type="text" class="form-control" name="lastname_3">
-										<label class="sublabel">Last Name</label>
-									</div>
-								</div>
-
-								<div class="row" style="margin-top: 10px;">
-									<div class="col-xs-6">
-										<input  type="text" class="form-control" name="firstname_4">
-										<label class="sublabel">First Name</label>
-									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control" name="lastname_4">
-										<label class="sublabel">Last Name</label>
-									</div>
-								</div>
-
-							</div>
-						</div> -->
-
-						<div class="row wedding">
+						<div class="row wedding" ng-if="coming=='Yes'">
 							<div class="col-sm-10 col-sm-offset-1">
 								<label for="plusguest">Additional Guests</label>
 								
