@@ -60,9 +60,11 @@ if(isset($_POST['email'])) {
  				echo '<div class="row"><div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><div class="row sectionBackground"><div class="col-xs-12"><div class="row">
           <div class="col-sm-12">
             <p class="p_logo_top">
-              <a href="/" ui-sref-active="home" class="logo">
-                T&amp;A
-              </a>
+              <span class="logo">
+                <a href="/">
+                 T&amp;A
+                </a>
+              </span>
             </p>
           </div>
         </div><div class="row" ><div class="col-sm-12" ><h3> Errors </h3> <p> ';
@@ -266,9 +268,11 @@ $headers = 'From: '.$email_from."\r\n".
 						<div class="row">
               <div class="col-sm-12">
                 <p class="p_logo_top">
-                  <a ui-sref="index" ui-sref-active="home" class="logo">
-                    T&amp;A
-                  </a>
+                  <span class="logo">
+                    <a href="/">
+                     T&amp;A
+                    </a>
+                  </span>
                 </p>
               </div>
             </div>
@@ -294,9 +298,11 @@ $headers = 'From: '.$email_from."\r\n".
 			</div>
 		</div>
 		<p class="p_logo">
-			<a href="/" class="logo">
-			  T&amp;A
-			</a>
+			<span class="logo">
+        <a href="/">
+         T&amp;A
+        </a>
+      </span>
 		</p>
 		<p class="credit">
       Copyright &copy; 2016<br>
