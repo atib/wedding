@@ -18,6 +18,14 @@ html {
   box-sizing: inherit;
 }
 
+a {
+	&:focus {
+		outline: none;
+		color: #000;
+		text-decoration: none;
+	}
+}
+
 body {
 	background: url('../../images/background.jpeg') no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -168,7 +176,7 @@ h4 {
 
 @media (min-width: 300px) and (max-width: 530px) {
 	ul {
-		text-align: left;
+		text-align: center;
 	}
 	h1 {
 		font-size: 3em;
@@ -178,7 +186,7 @@ h4 {
 
 @media (min-width: 300px) and (max-width: 530px) and (orientation: landscape) {
 	ul {
-		text-align: left;
+		text-align: center;
 	}
 	h1 {
 		font-size: 3em;
@@ -201,7 +209,7 @@ p {
 	font-size: 1.2em;
 }
 
-.p_logo {
+.p_logo, .p_logo_top {
 	position: absolute;
   right: 0;
   bottom: 40px;
@@ -210,6 +218,8 @@ p {
   text-align: center;
 }
 
+
+ 
 .logo {
 	// font-family: 'Lato';
 	color: #000;
@@ -228,15 +238,21 @@ p {
 	}
 }
 
+.p_logo_top {
+	position: relative;
+	bottom: 0;
+	.logo {}
+}
+
 .credit { 
 	text-transform: uppercase;
 	font-size: 0.8em;
 	position: absolute;
-	left: 0;
+	// left: 0;
 	bottom: 0;
 	padding: 1rem; 
 	right: 0;
-	text-align: center;
+	text-align: right;
 	a {
 		font-weight: 700;
 		// color: #1fc8db;
@@ -252,7 +268,7 @@ p {
 
 .sectionBackground {
 	background: #fff;
-  margin: 3% 0;
+  margin: 10% 0;
   // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   padding: 8% 10px; 
 }
@@ -291,6 +307,35 @@ form {
 			border-color: #dedede;
 			@include transition(0.5s);
 		}
+	}
+
+	select.form-control {
+		border-color: #dedede;
+		box-shadow: none;
+		background: #F6F6F6;
+		border-width: 1px;
+		border-radius: 0px;
+		min-height: 2.8em;
+		-webkit-appearance: none;
+		-moz-appearance: none; 
+		background: {
+			position: right 50%; 
+			repeat: no-repeat; 
+  		image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);
+		}
+    padding: .5em;
+    padding-right: 1.5em;
+    outline: none;
+    letter-spacing: 0.5px;
+		@include transition(0.5s);
+    &:focus {
+    	box-shadow: none;
+			outline: none;
+			background-color: #fff;
+			border-color: #dedede;
+			@include transition(0.5s);
+
+    }
 	}
 
 	.btn {
@@ -360,4 +405,60 @@ form {
 		text-decoration: none;
 		color: #000;
 	}
+}
+
+.showfadein {
+	@include transition(0.5s);
+}
+
+
+#coming {
+	margin: {
+		top: 10px;
+	}
+}
+
+input[type=radio] {
+	display: none;
+}
+
+label.radiolabel {
+	font: {
+		family: $mainFont;
+		size: 1em;
+		weight: 300;
+	}
+	text-transform: none;
+	padding-left: 1.7em;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	margin-right: 1em;
+	vertical-align: middle;
+
+	&:before {
+		content: "";
+		display: inline-block;
+		width: 17px;
+		height: 17px;
+		border-radius: 15px;
+		margin-right: 10px;
+		position: absolute;
+		left: 0;
+		bottom: 1px;
+		background-color: #ccc;
+		border: 5px solid transparent;
+		box-shadow: none;
+		// box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+	}
+}
+
+input[type=radio]:checked + label:before {
+		content: "\2022";
+		color: #fff;
+		text-align: center;
+		font-size: 21px;
+		line-height: 3px;
+		background: #444;
+		box-shadow: none;
 }

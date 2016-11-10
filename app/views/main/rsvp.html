@@ -1,13 +1,21 @@
-<div class="row">
+<!-- <div class="row">
 	<div class="col-sm-12">
 		<h2 ui-sref="index">Tasnim &amp; Atib </h2>
 	</div>
-</div>
+</div> -->
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 		<div class="row sectionBackground">
 			<div class="col-xs-12">
-				
+				<div class="row">
+					<div class="col-sm-12">
+						<p class="p_logo_top">
+							<a ui-sref="index" ui-sref-active="home" class="logo">
+							  T&amp;A
+							</a>
+						</p>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-sm-12" >
 						<h3>
@@ -19,113 +27,245 @@
 
 				
 				
-					<form>
-						<div class="row wedding" ng-hide="rsvp" style="text-align: center;">
-							<div class="col-xs-6 col-xs-offset-3 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 ">
-								<input type="password" ng-model="password_rsvp" class="form-control" style="text-align: center;" >
-								<label class="sublabel">Enter RSVP Password</label>
+				<form>
+					<div class="row wedding" ng-hide="rsvp" id="rsvp_password_field" style="text-align: center;">
+						<div class="col-xs-6 col-xs-offset-3 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 ">
+							<input type="password" ng-model="password_rsvp" class="form-control" style="text-align: center;" >
+							<label class="sublabel">Enter RSVP Password</label>
+						</div>
+					</div>
+				</form>
+
+				<form action="emailformrsvp.php" name="rsvp_form" method="POST">
+
+					<div ng-if="rsvp_password()">
+						<div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label for="email">Email Address * </label>
+								<input required="true" type="email" class="form-control" name="email">
 							</div>
 						</div>
-					</form>
 
-					<form action="emailformrsvp.php" name="rsvp_form" method="POST">
-
-						<div ng-if="rsvp_password()">
-							<div class="row wedding">
-								<div class="col-sm-10 col-sm-offset-1">
-									<label for="email">Email Address * </label>
-									<input required="true" type="email" class="form-control" name="email">
-								</div>
-							</div>
-
-							<div class="row wedding">
-								<div class="col-sm-10 col-sm-offset-1">
-									<label>Name *</label>
-									<div class="row">
-										<div class="col-sm-6">
-											<input required="true" type="text" class="form-control" name="firstname">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-sm-6">
-											<input required="true" type="text" class="form-control" name="lastname">
-											<label class="sublabel">Last Name</label>
-										</div>
+						<div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label>Name *</label>
+								<div class="row">
+									<div class="col-sm-6">
+										<input required="true" type="text" class="form-control" name="firstname">
+										<label class="sublabel">First Name</label>
 									</div>
-								</div>
-							</div>
-
-							<div class="row wedding">
-								<div class="col-sm-10 col-sm-offset-1">
-									<label for="coming">Will you be coming? *</label>
-									<input required="true" type="text" class="form-control" name="coming">
-								</div>
-							</div>
-
-							<div class="row wedding">
-								<div class="col-sm-10 col-sm-offset-1">
-									<label for="plusguest">Additional Guests</label>
-									
-									<div class="row" style="margin-top: 10px;"> 
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="firstname_1">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_1">
-											<label class="sublabel">Last Name</label>
-										</div>
+									<div class="col-sm-6">
+										<input required="true" type="text" class="form-control" name="lastname">
+										<label class="sublabel">Last Name</label>
 									</div>
-									
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="firstname_2">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_2">
-											<label class="sublabel">Last Name</label>
-										</div>
-									</div>
-									
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="firstname_3">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="lastname_3">
-											<label class="sublabel">Last Name</label>
-										</div>
-									</div>
-
-									<div class="row" style="margin-top: 10px;">
-										<div class="col-xs-6">
-											<input  type="text" class="form-control" name="firstname_4">
-											<label class="sublabel">First Name</label>
-										</div>
-										<div class="col-xs-6">
-											<input type="text" class="form-control" name="lastname_4">
-											<label class="sublabel">Last Name</label>
-										</div>
-									</div>
-
-								</div>
-							</div>
-							
-							<div class="row wedding">
-								<div class="col-sm-10 col-sm-offset-1">
-									<label for="message">Message</label>
-									<textarea name="message" class="form-control"></textarea>
-								</div>
-							</div>
-
-							<div class="row wedding">
-								<div class="col-sm-4 col-sm-offset-4">
-									<input type="submit" value="submit" class="btn btn-primary">
 								</div>
 							</div>
 						</div>
-					</form>
+
+						<div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label for="coming">Will you be coming? *</label>
+								<!-- <input required="true" type="text" class="form-control" name="coming"> -->
+								<div class="row" id="coming">
+                  <div class="col-sm-2 ">
+                      <input type="radio" id="yes_coming" name="coming" value="Yes" required="true">
+                      <label for="yes_coming" class="radiolabel">Yes</label>
+                  </div>
+                  <div class="col-sm-2">
+                      <input type="radio" id="no_call_centre" name="coming" value="No" required="true">
+                      <label for="no_call_centre" class="radiolabel">No</label>
+                  </div>
+              	</div>
+							</div>
+						</div>
+
+						<!-- Guests -->
+						<!-- <div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label for="plusguest">Additional Guests</label>
+								
+								<div class="row" style="margin-top: 10px;"> 
+									<div class="col-xs-6">
+										<input type="text" class="form-control" name="firstname_1">
+										<label class="sublabel">First Name</label>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" name="lastname_1">
+										<label class="sublabel">Last Name</label>
+									</div>
+								</div>
+								
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-6">
+										<input type="text" class="form-control" name="firstname_2">
+										<label class="sublabel">First Name</label>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" name="lastname_2">
+										<label class="sublabel">Last Name</label>
+									</div>
+								</div>
+								
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-6">
+										<input  type="text" class="form-control" name="firstname_3">
+										<label class="sublabel">First Name</label>
+									</div>
+									<div class="col-xs-6">
+										<input  type="text" class="form-control" name="lastname_3">
+										<label class="sublabel">Last Name</label>
+									</div>
+								</div>
+
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-6">
+										<input  type="text" class="form-control" name="firstname_4">
+										<label class="sublabel">First Name</label>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" name="lastname_4">
+										<label class="sublabel">Last Name</label>
+									</div>
+								</div>
+
+							</div>
+						</div> -->
+
+						<div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label for="plusguest">Additional Guests</label>
+								
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-6">
+										<select 
+									    ng-model="additonal_guests" 
+									    class="form-control"
+									    name="add_guests"
+									    id="additonal_guests"
+									    required="true"
+									    ng-options="option.value as option.name for option in options">
+									   
+										</select>
+									</div>
+								</div>
+
+								<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='1' || additonal_guests=='2' || additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'"> 
+									<div class="col-xs-12">
+										<h5>Guest 1</h5>
+										<div class="row">
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="firstname_1">
+												<label class="sublabel">First Name</label>
+											</div>
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="lastname_1">
+												<label class="sublabel">Last Name</label>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								
+								<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='2' || additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'">
+									<div class="col-xs-12">
+										<h5>Guest 2</h5>
+										<div class="row">
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="firstname_2">
+												<label class="sublabel">First Name</label>
+											</div>
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="lastname_2">
+												<label class="sublabel">Last Name</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='3' || additonal_guests=='4'|| additonal_guests=='5'">
+									<div class="col-xs-12">
+										<h5>Guest 3</h5>
+										<div class="row">
+											<div class="col-xs-6">
+												<input  type="text" class="form-control" name="firstname_3">
+												<label class="sublabel">First Name</label>
+											</div>
+											<div class="col-xs-6">
+												<input  type="text" class="form-control" name="lastname_3">
+												<label class="sublabel">Last Name</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='4'|| additonal_guests=='5'">
+									<div class="col-xs-12">
+										<h5>Guest 4</h5>
+										<div class="row">
+											<div class="col-xs-6">
+												<input  type="text" class="form-control" name="firstname_4">
+												<label class="sublabel">First Name</label>
+											</div>
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="lastname_4">
+												<label class="sublabel">Last Name</label>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+
+								<div class="row" style="margin-top: 10px;" ng-if="additonal_guests=='5'">
+									<div class="col-xs-12">
+										<h5>Guest 5</h5>
+										<div class="row">
+											<div class="col-xs-6">
+												<input  type="text" class="form-control" name="firstname_5">
+												<label class="sublabel">First Name</label>
+											</div>
+											<div class="col-xs-6">
+												<input type="text" class="form-control" name="lastname_5">
+												<label class="sublabel">Last Name</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row wedding">
+							<div class="col-sm-10 col-sm-offset-1">
+								<label for="message">Message</label>
+								<textarea name="message" class="form-control"></textarea>
+							</div>
+						</div>
+
+						<div class="row wedding">
+							<div class="col-sm-4 col-sm-offset-4">
+								<input type="submit" value="submit" class="btn btn-primary">
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<hr>
+
+				<div class="row wedding">
+					<div class="col-sm-12" style="text-align: center;">
+						<!-- <h4>Just In Case</h4> -->
+						<p class="wedding_inner">reservation questions</p>
+						<a href="mailto:rsvp@tasnimandatib.co.uk">
+							rsvp [at] tasnimandatib.co.uk
+						</a>
+
+						<p class="wedding_inner">want to say hello?</p>
+						<a href="mailto:hello@tasnimandatib.co.uk">
+							hello [at] tasnimandatib.co.uk
+						</a>
+					</div>
+				</div>
+
+
 				
 				
 

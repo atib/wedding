@@ -7,7 +7,7 @@
 	<meta name="robots" content="nofollow" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
-	<link rel="shortcut icon" href="assets/images/t_a.png" size="16x16">
+	<link rel="shortcut icon" href="assets/images/favicon.png" size="16x16">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:100, 400" rel="stylesheet">
@@ -30,13 +30,14 @@
 	  </div>
 		
 
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-sm-12">
 				<h2> <a href="/">Tasnim &amp; Atib</a></h2>
 			</div>
-		</div>
+		</div> -->
 
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
  
 if(isset($_POST['email'])) {
  
@@ -56,14 +57,22 @@ if(isset($_POST['email'])) {
  
         // your error code can go here
  				
- 				echo '<div class="row"><div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><div class="row sectionBackground"><div class="col-xs-12"><div class="row" ><div class="col-sm-12" ><h3> Errors </h3> <p> ';
+ 				echo '<div class="row"><div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><div class="row sectionBackground"><div class="col-xs-12"><div class="row">
+          <div class="col-sm-12">
+            <p class="p_logo_top">
+              <a ui-sref="index" ui-sref-active="home" class="logo">
+                T&amp;A
+              </a>
+            </p>
+          </div>
+        </div><div class="row" ><div class="col-sm-12" ><h3> Errors </h3> <p> ';
         echo "We are very sorry, but there were error(s) found with the form you submitted. ";
  
         echo "These errors appear below.<br /><br />";
  
         echo $error."<br /><br />";
  
-        echo "Please <a class='emailrsvp_link' href='../#/rsvp'>go back</a> and fix these errors.<br /><br />";
+        echo "Please <a class='emailrsvp_link' href='/#/rsvp'>go back</a> and fix these errors.<br /><br />";
  				
  				echo '</p></div></div><div class="row"><div class="col-sm-12"><div id="instafeed"></div></div></div></div></div></div></div><p class="p_logo"><a href="../" class="logo">T&amp;A</a></p><p class="credit">Designed &amp; Developed by <a href="https://atib.github.io">Atib</a></p></div>';
 
@@ -83,17 +92,17 @@ if(isset($_POST['email'])) {
  
         !isset($_POST['coming']) ||
 
-        !isset($_POST['firstname_1']) ||
-        !isset($_POST['lastname_1']) ||
+        // !isset($_POST['firstname_1']) ||
+        // !isset($_POST['lastname_1']) ||
 
-        !isset($_POST['firstname_2']) ||
-        !isset($_POST['lastname_2']) ||
+        // !isset($_POST['firstname_2']) ||
+        // !isset($_POST['lastname_2']) ||
 
-        !isset($_POST['firstname_3']) ||
-        !isset($_POST['lastname_3']) ||
+        // !isset($_POST['firstname_3']) ||
+        // !isset($_POST['lastname_3']) ||
 
-        !isset($_POST['firstname_4']) ||
-        !isset($_POST['lastname_4']) ||
+        // !isset($_POST['firstname_4']) ||
+        // !isset($_POST['lastname_4']) ||
  
         !isset($_POST['message'])) {
  
@@ -112,17 +121,44 @@ if(isset($_POST['email'])) {
 
 
 	  // Additional Guests Names
-    $firstname_1 = $_POST['firstname_1']; // not required
-	  $lastname_1 = $_POST['lastname_1']; // not required
 
-    $firstname_2 = $_POST['firstname_2']; // not required
-	  $lastname_2 = $_POST['lastname_2']; // not required
+    if (
+        isset($_POST['firstname_1']) ||
+        isset($_POST['lastname_1']) ||
 
-    $firstname_3 = $_POST['firstname_3']; // not required
-	  $lastname_3 = $_POST['lastname_3']; // not required
+        isset($_POST['firstname_2']) ||
+        isset($_POST['lastname_2']) ||
 
-    $firstname_4 = $_POST['firstname_4']; // not required
-	  $lastname_4 = $_POST['lastname_4']; // not required 
+        isset($_POST['firstname_3']) ||
+        isset($_POST['lastname_3']) ||
+
+        isset($_POST['firstname_4']) ||
+        isset($_POST['lastname_4']) ||
+
+        isset($_POST['firstname_5']) ||
+        isset($_POST['lastname_5']) ||
+        
+
+        isset($_POST['add_guests'])) {
+
+      $firstname_1 = $_POST['firstname_1']; // not required
+      $lastname_1 = $_POST['lastname_1']; // not required
+
+      $firstname_2 = $_POST['firstname_2']; // not required
+      $lastname_2 = $_POST['lastname_2']; // not required
+
+      $firstname_3 = $_POST['firstname_3']; // not required
+      $lastname_3 = $_POST['lastname_3']; // not required
+
+      $firstname_4 = $_POST['firstname_4']; // not required
+      $lastname_4 = $_POST['lastname_4']; // not required 
+
+      $firstname_5 = $_POST['firstname_5']; // not required
+      $lastname_5 = $_POST['lastname_5']; // not required 
+
+      $additional = $_POST['add_guests'];
+  }
+    
 
     
  
@@ -168,7 +204,7 @@ if(isset($_POST['email'])) {
  
     function clean_string($string) {
  
-      $bad = array("content-type","bcc:","to:","cc:","href");
+      $bad = array("content-type","bcc:","to:","cc:","href", "string:");
  
       return str_replace($bad,"",$string);
  
@@ -176,23 +212,54 @@ if(isset($_POST['email'])) {
  
      
  
-    $email_message .= "Main Guest Name: ".clean_string($first_name)." ".clean_string($last_name). "\n";
+    $email_message .= "Main Guest Name: ".clean_string($first_name)." ".clean_string($last_name). "\n\n";
   
-    $email_message .= "Email: ".clean_string($email_from)."\n";
+    $email_message .= "Email: \n".clean_string($email_from)."\n\n";
  
-    $email_message .= "Are they coming?: ".clean_string($coming)."\n";
+    $email_message .= "Are they coming?: \n".clean_string($coming)."\n\n";
  		
-    $email_message .= "The additional guests are listed below \n";
+    if (isset($_POST['firstname_1']) ||
+        isset($_POST['lastname_1']) ||
 
-    $email_message .= "Additional Guest 1: ".clean_string($firstname_1)." ".clean_string($lastname_1). "\n";
+        isset($_POST['firstname_2']) ||
+        isset($_POST['lastname_2']) ||
 
-    $email_message .= "Additional Guest 2: ".clean_string($firstname_2)." ".clean_string($lastname_2). "\n";
+        isset($_POST['firstname_3']) ||
+        isset($_POST['lastname_3']) ||
+
+        isset($_POST['firstname_4']) ||
+        isset($_POST['lastname_4']) ||
+
+        isset($_POST['firstname_5']) ||
+        isset($_POST['lastname_5'])) {
+
+          $email_message .= "The additional guests are listed below \n\n";
+
+          $email_message .= "Number of Additional Guests: ".clean_string($additional)." \n\n";
+
+          if($firstname_1) {
+            $email_message .= "Additional Guest 1: \n".clean_string($firstname_1)." ".clean_string($lastname_1). "\n\n";
+          }
+
+          if($firstname_2){
+            $email_message .= "Additional Guest 2: \n".clean_string($firstname_2)." ".clean_string($lastname_2). "\n\n";
+          }
+
+          if($firstname_3){
+          $email_message .= "Additional Guest 3: \n".clean_string($firstname_3)." ".clean_string($lastname_3). "\n\n";
+
+          }
+          if($firstname_4){
+          $email_message .= "Additional Guest 4: \n".clean_string($firstname_4)." ".clean_string($lastname_4). "\n\n";
+
+          }
+          if($firstname_5){
+          $email_message .= "Additional Guest 5: \n".clean_string($firstname_5)." ".clean_string($lastname_5). "\n\n";
+
+          }
+    }
     
-    $email_message .= "Additional Guest 3: ".clean_string($firstname_3)." ".clean_string($lastname_3). "\n";
-    
-    $email_message .= "Additional Guest 4: ".clean_string($firstname_4)." ".clean_string($lastname_4). "\n";
-
-    $email_message .= "Message: ".clean_string($comments)."\n";
+    $email_message .= "Message: \n".clean_string($comments)."\n";
  
      
  
@@ -217,7 +284,15 @@ $headers = 'From: '.$email_from."\r\n".
 			<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 				<div class="row sectionBackground">
 					<div class="col-xs-12">
-						
+						<div class="row">
+              <div class="col-sm-12">
+                <p class="p_logo_top">
+                  <a ui-sref="index" ui-sref-active="home" class="logo">
+                    T&amp;A
+                  </a>
+                </p>
+              </div>
+            </div>
 						<div class="row" >
 							<div class="col-sm-12" >
 								<h3>
