@@ -1,6 +1,6 @@
 {
   "media_limit": 0,
-  "cache_time": 30,
+  "cache_time": 60,
   "allowed_usernames": "*",
   "allowed_tags": "*",
   "debug": "false",
