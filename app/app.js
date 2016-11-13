@@ -111,7 +111,7 @@ WeddingApp.config(['$stateProvider', '$urlRouterProvider',
 				    $scope.additonal_guests = $scope.options[0].value;
 						
 						$scope.rsvp_password = function() {
-							if ($scope.password_rsvp == 'aw3som3n355') {
+							if ($scope.password_rsvp == 'ni44ah26') {
 								document.getElementById('rsvp_password_field').style.display = 'none';
 								return true;
 							}
