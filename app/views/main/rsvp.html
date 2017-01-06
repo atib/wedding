@@ -18,7 +18,7 @@
                         <h3>
                             Celebrate with us
                         </h3>
-                        <p>let us know if you can attend by january 23, 2017. Huggles!! ^_^</p>
+                        <p>Let us know if you can attend by Feburary 10, 2017. Hugs!!</p>
                     </div>
                 </div>
 
@@ -57,13 +57,29 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="row wedding">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <label for="side">Bride/ Groom Side *</label>
+                                <div class="row" id="side">
+                                    <div class="col-sm-5 col-md-5">
+                                        <input type="radio" id="bride" ng-model="side" name="side" value="Bride" required="true">
+                                        <label for="bride" class="radiolabel">I'm with the Bride</label>
+                                    </div>
+                                    <div class="col-sm-7 col-md-7">
+                                        <input type="radio" id="groom" ng-model="side" name="side" value="Groom" required="true">
+                                        <label for="groom" class="radiolabel">I'm with the Groom</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row wedding">
                             <div class="col-sm-10 col-sm-offset-1">
                                 <label for="coming">Will you be coming? *</label>
                                 <div class="row" id="coming">
                                     <div class="col-sm-5 col-md-5">
-                                        <input type="radio" id="yes_coming" ng-model="coming" name="coming" value="Hell Yes" required="true">
+                                        <input type="radio" id="yes_coming" ng-model="coming" name="coming" value="Yes" required="true">
                                         <label for="yes_coming" class="radiolabel">Oh, Hell Yes!</label>
                                     </div>
                                     <div class="col-sm-7 col-md-7">
@@ -74,7 +90,7 @@
                             </div>
                         </div>
 
-                        <div class="row wedding" ng-if="coming=='Hell Yes'">
+                        <div class="row wedding" ng-if="coming=='Yes'">
                             <div class="col-sm-10 col-sm-offset-1">
                                 <label for="plusguest">Additional Guests</label>
 
